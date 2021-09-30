@@ -17,11 +17,11 @@
 
 <hr>
 
-<div class="alert alert-danger">
-    No se Encontro nada Con el Término ABCDE
+<div *ngIf="hayerror" class="alert alert-danger">
+    No se Encontro nada Con el Término {{termino}}
 </div>
 
-<div class="row">
+<div *ngIf="!hayerror" class="row">
     <div class="col">
         <table class="table table-hover">
             <thead>
