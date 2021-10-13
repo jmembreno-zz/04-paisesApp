@@ -20,16 +20,16 @@ export class PorRegionComponent {
 
   // regiones:string[] = ['Africa','Americas','Asia','Europe','Oceania'];
 
- regiones : string[] = ['EU','EFTA','CARICOM','PA','AU','USAN','EEU','AL','ASEAN','CAIS','CEFTA','NAFTA','SAARC'];
+  regiones: string[] = ['EU', 'EFTA', 'CARICOM', 'PA', 'AU', 'USAN', 'EEU', 'AL', 'ASEAN', 'CAIS', 'CEFTA', 'NAFTA', 'SAARC'];
 
- regionActiva : string='';
+  regionActiva: string = '';
 
- hayerror: boolean = false;
+  hayerror: boolean = false;
 
- paises: Country[] = [];
+  paises: Country[] = [];
 
 
-  constructor(private paisService:PaisService) { }
+  constructor(private paisService: PaisService) { }
 
   //(region === regionActiva) ? 'btn btn-primary' : 'btn btn-outline-primary'
 
@@ -43,7 +43,7 @@ export class PorRegionComponent {
 
   activaregion(region: string) {
 
-    if(region === this.regionActiva){return};
+    if (region === this.regionActiva) { return };
 
     this.regionActiva = region;
 
@@ -71,7 +71,7 @@ export class PorRegionComponent {
 
       });
 
-}
+  }
 
   //TODO :HACER EL LLAMADO AL SERVICIO
 

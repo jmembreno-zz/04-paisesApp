@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators'
+import { catchError, tap } from 'rxjs/operators'
 import { Country } from '../interfaces/pais.interface';
 
 @Injectable({
@@ -10,6 +10,13 @@ import { Country } from '../interfaces/pais.interface';
 export class PaisService {
 
   private apiUrl: string = 'https://restcountries.com/v2'
+
+  get httpParams() {
+
+    return new HttpParams()
+      .set('fields', 'name,capital,alpha2Code,flag,population');
+
+  }
 
   // https://restcountries.com/v2/alpha/nic
 
@@ -22,7 +29,12 @@ export class PaisService {
 
     const url = `${this.apiUrl}/name/${termino}`;
 
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, { params: this.httpParams })
+      .pipe(
+        tap(
+          console.log
+        )
+      )
     // .pipe(
     //   catchError( err => of(['Hola Jairo Membreño']))
     // );
@@ -33,7 +45,7 @@ export class PaisService {
 
     const url = `${this.apiUrl}/capital/${termino}`;
 
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, { params: this.httpParams });
     // .pipe(
     //   catchError( err => of(['Hola Jairo Membreño']))
     // );
@@ -56,9 +68,17 @@ export class PaisService {
 
   buscarRegion(region: string): Observable<Country[]> {
 
+    //const url = `${this.apiUrl}/regionalbloc/${region}?fields=name,capital,alpha2Code,flag,population`;
     const url = `${this.apiUrl}/regionalbloc/${region}`;
 
-    return this.http.get<Country[]>(url);
+
+
+    return this.http.get<Country[]>(url, { params: this.httpParams })
+      .pipe(
+        tap(
+          console.log
+        )
+      )
 
 
   }
