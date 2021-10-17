@@ -29,12 +29,12 @@ export class PaisService {
 
     const url = `${this.apiUrl}/name/${termino}`;
 
-    return this.http.get<Country[]>(url, { params: this.httpParams })
-      .pipe(
-        tap(
-          console.log
-        )
-      )
+    return this.http.get<Country[]>(url, { params: this.httpParams });
+      // .pipe(
+      //   tap(
+      //     console.log
+      //   )
+      // )
     // .pipe(
     //   catchError( err => of(['Hola Jairo Membreño']))
     // );
@@ -73,12 +73,12 @@ export class PaisService {
 
 
 
-    return this.http.get<Country[]>(url, { params: this.httpParams })
-      .pipe(
-        tap(
-          console.log
-        )
-      )
+    return this.http.get<Country[]>(url, { params: this.httpParams });
+      // .pipe(
+      //   tap(
+      //     console.log
+      //   )
+      // )
 
 
   }
